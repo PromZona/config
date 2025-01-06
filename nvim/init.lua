@@ -406,6 +406,13 @@ require('lazy').setup({
       }
       vim.keymap.set('n', '<leader>ch', '<cmd>ClangdSwitchSourceHeader<cr>', { desc = '[C]hange [H]eader C++' })
 
+      require('lspconfig').gdscript.setup {
+        cmd = { 'ncat', 'localhost', '6005' },
+        root_dir = function()
+          return vim.fs.dirname(vim.fs.find('project.godot', { upward = true })[1])
+        end,
+      }
+
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -572,6 +579,7 @@ require('lazy').setup({
         keywordStyle = { italic = false, bold = true },
         statementStyle = { bold = true },
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
+        transparent = true,
       }
 
       vim.cmd 'colorscheme kanagawa-dragon'
