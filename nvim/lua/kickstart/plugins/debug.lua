@@ -28,34 +28,15 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
-    dap.adapters.codelldb = {
-      type = 'server',
-      port = '${port}',
-      executable = {
-        command = 'codelldb.exe', -- WARN: Probably will have to update path here
-        args = { '--port', '${port}' },
-      },
-    }
-
     dap.adapters.lldb = {
       type = 'executable',
-      command = 'Y:/_Programmes/msys2/clang64/bin/lldb-dap.exe',
+      command = 'lldb-dap',
       name = 'lldb',
     }
 
     dap.configurations.cpp = {
       {
-        name = 'codelldb: Launch',
-        type = 'codelldb',
-        request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-      },
-      {
-        name = '[my]LLDB: Launch',
+        name = 'My default lldb',
         type = 'lldb',
         request = 'launch',
         program = function()
