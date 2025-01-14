@@ -1,11 +1,11 @@
 # Ignore everything
 *
 
+# nvim ignores
 tags
 test.sh
 .luarc.json
 .stylua.*
-
 spell/
 lazy-lock.json
 
