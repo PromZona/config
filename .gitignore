@@ -1,3 +1,6 @@
+# Ignore everything
+*
+
 tags
 test.sh
 .luarc.json
@@ -5,3 +8,7 @@ test.sh
 
 spell/
 lazy-lock.json
+
+# Except
+!/nvim/
+!/wezterm/
