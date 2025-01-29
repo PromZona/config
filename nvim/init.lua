@@ -475,16 +475,14 @@ require("lazy").setup({
 		version = "v0.*",
 		opts = {
 			keymap = {
-				preset = "default",
-				["<Up>"] = { "select_prev", "fallback" },
-				["<Down>"] = { "select_next", "fallback" },
+				preset = "super-tab",
 			},
 			appearance = {
 				use_nvim_cmp_as_default = true,
 			},
 			completion = {
 				menu = {
-					auto_show = false,
+					auto_show = true,
 				},
 			},
 			sources = {
@@ -629,15 +627,6 @@ require("lazy").setup({
 		},
 	},
 })
-
-vim.keymap.set("i", "<C-x>", function()
-	local cmp = require("blink-cmp")
-	if cmp.is_visible() then
-		cmp.accept()
-	else
-		cmp.show()
-	end
-end, { noremap = true, silent = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
